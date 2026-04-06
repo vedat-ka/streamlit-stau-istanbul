@@ -89,9 +89,13 @@ Pandas liest numerische Spalten (int, float) daraus **ohne zusätzliche Kopie**.
 
 ```
 streamlit-stau-istanbul/
-├── app.py                        # Streamlit-Hauptanwendung
+├── app.py                        # Streamlit-Hauptanwendung (UI & Charts)
+├── db.py                         # Datenbankschicht (DuckDB, alle SQL-Abfragen)
 ├── requirements.txt              # Python-Abhängigkeiten
+├── traffic.duckdb                # Persistente DuckDB-Datenbank (auto-generiert)
+├── .gitignore
 ├── README.md
+├── projekt.md                    # Projektnotizen
 └── data/
     ├── traffic_density_202312.csv
     ├── traffic_density_202401.csv
