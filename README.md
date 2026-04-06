@@ -1,7 +1,7 @@
 # 🚦 Istanbul Stau-Analyse
 
 Interaktives Streamlit-Dashboard zur Analyse der Verkehrsdichte in Istanbul.  
-Datengrundlage: IBB Open Data Portal – **22 Mio. Messpunkte** von Dezember 2023 bis Januar 2025.
+Datengrundlage: IBB Open Data Portal – **22 Mio. Messpunkte** von Dezember 2023 bis Januar 2025. Weil die Daten zu groß sin ist nur eine CSV Datei mit dabei, den rest hier herunter laden: https://data.ibb.gov.tr/dataset/hourly-traffic-density-data-set
 
 > **Daten:** Alle `.csv`-Dateien im Ordner `data/` werden automatisch eingelesen. Neue Monatsdateien einfach in `data/` ablegen – beim nächsten App-Start werden **nur die neuen Dateien** in `traffic.duckdb` nachimportiert, bereits importierte Dateien werden übersprungen. Es ist **nicht** nötig, `traffic.duckdb` zu löschen.
 
