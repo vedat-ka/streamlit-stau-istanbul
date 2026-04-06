@@ -96,12 +96,16 @@ class TrafficDashboard:
 
         date_range = st.sidebar.date_input(
             "Zeitraum",
-            value=(self.d_min, self.d_max),
-            min_value=self.d_min,
-            max_value=self.d_max,
+            value=(pd.Timestamp(self.d_min).date(), pd.Timestamp(self.d_max).date()),
+            min_value=pd.Timestamp(self.d_min).date(),
+            max_value=pd.Timestamp(self.d_max).date(),
         )
         if isinstance(date_range, (list, tuple)) and len(date_range) == 2:
             self.d_from, self.d_to = date_range
+        elif isinstance(date_range, (list, tuple)) and len(date_range) == 1:
+            # Nutzer hat nur Startdatum gewählt – bis Ende des Datensatzes
+            self.d_from = date_range[0]
+            self.d_to = self.d_max
         else:
             self.d_from = self.d_to = date_range
 
@@ -312,7 +316,7 @@ class TrafficDashboard:
         st.subheader("🗺️ Karte: Stau-Hotspots (Top 500)")
         map_data = self.db.get_map_data(self.where, self.stau_threshold)
 
-        fig = px.scatter_mapbox(
+        fig = px.scatter_map(
             map_data,
             lat="lat", lon="lon",
             color="stau_pct",
@@ -324,7 +328,7 @@ class TrafficDashboard:
             center={"lat": 41.015, "lon": 28.979},
             hover_data={"avg_speed": True, "stau_pct": True, "messungen": True},
             labels={"stau_pct": "Stau %", "avg_speed": "Ø km/h"},
-            mapbox_style="carto-positron",
+            map_style="carto-positron",
             height=420,
         )
         fig.update_layout(margin=dict(t=0, b=0))
