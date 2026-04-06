@@ -95,7 +95,6 @@ streamlit-stau-istanbul/
 ├── traffic.duckdb                # Persistente DuckDB-Datenbank (auto-generiert)
 ├── .gitignore
 ├── README.md
-├── projekt.md                    # Projektnotizen
 └── data/
     ├── traffic_density_202312.csv
     ├── traffic_density_202401.csv
